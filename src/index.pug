@@ -10,6 +10,86 @@ html(lang="en")
   body
     .wrapper
       .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+        .welcome-section
+          section.hero
+            .container.hero__container
+              header.header
+                .header__logo ВЛ
+                .header__menu
+                  nav.nav
+                    ul.nav__list
+                      - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
+                      each item in menu
+                        li.nav__item
+                          a(href="").nav__link #{item}
+
+                .header__links
+                  ul.socials__list
+                    - var social = ['insta', 'vk', 'github']
+                    each item in social
+                      li.socials__item
+                        a(href="").socials__link
+                          +icon(`${item}`, 'socials__icon')
+              .hero-content
+                .user-info
+                  .user-info__description Личный сайт веб разработчика
+                  .user-info__name  Василий Лапшинкин
+              .hero-bottom-buttons
+                .scroll-down-button Скролл
+          section.about
+            .container.about__container
+              .about__left
+                .user
+                  .user__avatar
+
+                  .user__data
+                    table.user__data__table
+                      -
+                        var data =[
+                          ['Проживаю:', 'Москва'],
+                          ['Возраст:', '26 лет'],
+                          ['Родился:', '1 июня 1995'],
+                        ]
+                      each row in data
+                        tr.user__data__row
+                          td.user__data__cell #{row[0]}
+                          td.user__data__cell #{row[1]}
+              .about__right
+                .about__welcome Привет, меня зовут
+                .section-title Василий Лапшинкин
+                .about__description Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                .about__ps Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+        .middle-section
+          section.values
+            .container.values__container
+              .values__left
+                .values__image
+                  img.values__img
+              .values__right
+                .values__title
+                  .section-title Чем я могу быть вам полезен
+                  .values__description
+                    p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+                ul.user-skills
+                  li.users-skills__item
+                    .skills__row
+                      .skills__row__title Frontend
+                      ul.skills__row__list
+                        -
+                          var skillData = [
+                            ['HTML5:', '25'],
+                            ['CSS3:', '12.5'],
+                            ['Javascript:', '75'],
+                            ['Jquery и Vue.js:', '25'],
+                          ]
+                        each skillCircle in skillData
+                          li.skills__row__item
+                            .skill
+                              - var skillDataOstatok = 100 - skillCircle[1]
+                              svg(viewBox="0 0 42 42").skill__shape
+                                circle(cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="1.5").skill__circle.skill__circle--under
+                                circle(cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="url('#circleGradient')" stroke-width="3" stroke-dasharray=`${skillCircle[1]} ${skillDataOstatok}` stroke-dashoffset="50").skill__circle.skill__circle--above
+                                linearGradient(gradientTransform="rotate(90)")#circleGradient
+                                  stop(offset="5%" stop-color="#7c00ea")
+                                  stop(offset="95%" stop-color="#4a00ea")
+                              .skill__title #{skillCircle[0]}
