@@ -64,7 +64,7 @@ html(lang="en")
             .container.values__container
               .values__left
                 .values__image
-                  img.values__img
+                  +image('content/briefcase.png', 'values__image__img')
               .values__right
                 .values__title
                   .section-title Чем я могу быть вам полезен
@@ -75,21 +75,84 @@ html(lang="en")
                     .skills__row
                       .skills__row__title Frontend
                       ul.skills__row__list
-                        -
-                          var skillData = [
-                            ['HTML5:', '25'],
-                            ['CSS3:', '12.5'],
-                            ['Javascript:', '75'],
-                            ['Jquery и Vue.js:', '25'],
-                          ]
-                        each skillCircle in skillData
-                          li.skills__row__item
+                        li.skills__row__item
+                          -
+                            var skillData = [
+                              ['HTML5:', '25'],
+                              ['CSS3:', '12.5'],
+                              ['Javascript:', '75'],
+                              ['Jquery и Vue.js:', '25'],
+                            ]
+                          each skillCircle in skillData
                             .skill
                               - var skillDataOstatok = 100 - skillCircle[1]
                               svg(viewBox="0 0 42 42").skill__shape
-                                circle(cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="1.5").skill__circle.skill__circle--under
-                                circle(cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="url('#circleGradient')" stroke-width="3" stroke-dasharray=`${skillCircle[1]} ${skillDataOstatok}` stroke-dashoffset="50").skill__circle.skill__circle--above
+                                circle(cx="21" cy="21" r="19" fill="transparent" stroke="#d2d3d4" stroke-width="1.5").skill__circle.skill__circle--under
+                                circle(cx="21" cy="21" r="19" fill="transparent" stroke="url('#circleGradient')" stroke-width="3" stroke-dasharray=`${skillCircle[1]} ${skillDataOstatok}` stroke-dashoffset="50").skill__circle.skill__circle--above
                                 linearGradient(gradientTransform="rotate(90)")#circleGradient
                                   stop(offset="5%" stop-color="#7c00ea")
                                   stop(offset="95%" stop-color="#4a00ea")
                               .skill__title #{skillCircle[0]}
+                ul.user-skills
+                  li.users-skills__item
+                    .skills__row
+                      .skills__row__title Workflow
+                      ul.skills__row__list
+                        li.skills__row__item
+                          -
+                            var skillData = [
+                              ['GIT:', '13.5'],
+                              ['Terminal:', '25'],
+                              ['Gulp:', '50'],
+                              ['Webpack:', '40'],
+                            ]
+                          each skillCircle in skillData
+                            .skill
+                              - var skillDataOstatok = 100 - skillCircle[1]
+                              svg(viewBox="0 0 42 42").skill__shape
+                                circle(cx="21" cy="21" r="18" fill="transparent" stroke="#d2d3d4" stroke-width="2").skill__circle.skill__circle--under
+                                circle(cx="21" cy="21" r="18" fill="transparent" stroke="url('#circleGradient')" stroke-width="5" stroke-dasharray=`${skillCircle[1]} ${skillDataOstatok}` stroke-dashoffset="50").skill__circle.skill__circle--above
+                                linearGradient(gradientTransform="rotate(90)")#circleGradient
+                                  stop(offset="5%" stop-color="#7c00ea")
+                                  stop(offset="95%" stop-color="#4a00ea")
+                              .skill__title #{skillCircle[0]}
+          section.portfolio
+            .container.portfolio__container
+              -
+                var arrPortfolio = [
+                  [['CSS', 'PHP', 'JS', 'TYPESCRIPT'], 'Название сайта 1', 'Описание сайта 1', 'url-1'],
+                  [['HTML', 'PHP', 'JS', 'TYPESCRIPT'], 'Название сайта 1', 'Описание сайта 1', 'url-1'],
+                  [['HTML', 'CSS', 'JS', 'TYPESCRIPT'], 'Название сайта 1', 'Описание сайта 1', 'url-1'],
+                  [['HTML', 'CSS', 'PHP', 'TYPESCRIPT'], 'Название сайта 1', 'Описание сайта 1', 'url-1'],
+                  [['HTML', 'CSS', 'PHP', 'JS'], 'Название сайта 1', 'Описание сайта 1', 'url-1'],
+                ]
+              .portfolio__title
+                .section-title Мои работы
+              .portfolio__left
+                .portfolio__project
+                  .portfolio__project__active
+                    .portfolio__project__active__image
+                      +image('content/portfolio/1.jpg', 'portfolio__project__active__image__img')
+                    .portfolio__project__active__num 1
+                  .portfolio__project__list
+                    each itemPortfolio, index in arrPortfolio
+                      .portfolio__project__item
+                        .portfolio__project__item__image
+                          +image(`content/portfolio/${index + 1}.jpg`, `portfolio__project__item__image__img`)
+                  .portfolio__project__actions
+                    .portfolio__project__actions__next
+                      +icon('arrow-down', 'portfolio__project__actions__next__icon')
+                    .portfolio__project__actions__prev
+                      +icon('arrow-down', 'portfolio__project__actions__next__icon')
+              .portfolio__right
+                each itemPortfolio in arrPortfolio
+                  .portfolio__right--box
+                    .portfolio__project__tool
+                      .portfolio__project__tool__list
+                        each itemPortfolioSkill, index in itemPortfolio[0]
+                          .portfolio__project__tool__item #{itemPortfolioSkill}
+                    .portfolio__project__name #{itemPortfolio[1]}
+                    .portfolio__project__description #{itemPortfolio[2]}
+                    .portfolio__project__link__wrap
+                      +icon('link', '.portfolio__project__link__icon')
+                      a(href=`${itemPortfolio[3]}`).portfolio__project__link Посмотреть сайт
