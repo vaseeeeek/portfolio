@@ -174,3 +174,37 @@ html(lang="en")
                         a(href=`${itemPortfolio[3]}`).portfolio__project__description__link
                           +icon('link', 'portfolio__project__description__link__icon')
                           .portfolio__project__description__link__text Посмотреть сайт
+        .bottom-section
+          section.reviews
+            .container.reviews__container
+              .reviews__title
+                .section-title.reviews__section-title Что обо мне говорят
+                .reviews__slider-btns
+                  .reviews__slider-btn.reviews__slider-btn--prev
+                    +icon('arrow-down', 'reviews__slider-controls__icon')
+                  .reviews__slider-btn.reviews__slider-btn--next
+                    +icon('arrow-down', 'reviews__slider-controls__icon')
+              .reviews__slider__wrap
+                ul.reviews__slider
+                  -
+                    var quote = [
+                      {name: 'Ковальчук Дмитрий', image:'1',text: "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 9,5 месяца только самых тяжелых испытаний и бессонных ночей!",occ: 'Основатель Loftschool'},
+                      {name: 'Владимир Сабанцев', image:'2',text: "Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах",occ: 'Преподаватель'},
+                      // {name: 'Николай Ботин', image:'3',text: "Нужен был интернет магазин под ключ, остались довольны",occ: 'Владелец интернет магазина'}
+                    ]
+                  each item, index in quote
+                    li.reviews__item
+                      .quote
+                        .quote--left
+                          +icon(`quote`, 'quote__icon')
+                        .quote--right
+                          .quote__text #{item['text']}
+                          .quote__author
+                            .user.user--horizontal
+                              .user__avatar
+                                +image(`content/quote/${item['image']}.png`, '.user__avatar__img')
+                              .user__data
+                                .user__name #{item['name']}
+                                .user__occ  #{item['occ']}
+          section.form
+            .container
