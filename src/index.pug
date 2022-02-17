@@ -206,5 +206,38 @@ html(lang="en")
                               .user__data
                                 .user__name #{item['name']}
                                 .user__occ  #{item['occ']}
-          section.form
-            .container
+          section.feedback
+            .container.feedback__container
+              .feedback__title
+                .section-title.feedback__section-title Связаться со мной
+              .feedback--box
+                form(action='', method='POST')
+                  .form__wrap
+                    .form__user-data
+                      .form__item
+                        .form__image
+                          +icon(`user`, 'form__icon')
+                        .form__input-box
+                          .form__label
+                            label(for="name").form__label Введите ваше имя
+                          .form__input
+                            input(id="name", type="text", name="user_name", placeholder="Имя")
+                      .form__item
+                        .form__image
+                          +icon(`envelope`, 'form__icon')
+                        .form__input-box
+                          .form__label
+                            label(for="mail").form__label Введите ваш email
+                          .form__input
+                            input(id="mail", type="email", name="user_mail", placeholder="Email")
+                    .form__comment
+                      .form__item
+                        .form__image
+                          +icon(`message`, 'form__icon')
+                        .form__input-box
+                          .form__label
+                            label(for="msg").form__label Сообщение к письму
+                          .form__input
+                            input(id="msg", type="textarea", name="user_msg", placeholder="Текст сообщения...")
+                    .form__button
+                      button( type="submit") Отправить

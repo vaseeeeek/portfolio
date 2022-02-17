@@ -1,0 +1,64 @@
+.form{
+    &__wrap{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+    &__user-data{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        .form__item {
+            width: 44%;
+        }
+    }
+    &__item{
+        display: flex;
+        padding-bottom: 15px;
+        border-bottom: solid 2px #464d62;
+    }
+    &__input-box{
+        display: flex;
+        flex-direction: column;
+    }
+    &__image{
+        width: 26px;
+        margin-right: 20px;
+        display: flex;
+        align-items: flex-end;
+    }
+    &__icon{
+        fill: #464d62;
+        opacity: 0.3;
+    }
+    &__label{
+        margin-bottom: 30px;
+        label {
+            fill: #464d62;
+            opacity: .3;
+        }
+    }
+    &__input {
+        input {
+            background: transparent;
+            outline: none;
+            border: #006aed;
+        }
+    }
+    &__comment{
+        margin-bottom: 60px;
+    }
+    &__button{
+        button{
+            width: 347px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #9300e8, #4a00ed);
+            color: #fff;
+            border-top-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+    }
+}
