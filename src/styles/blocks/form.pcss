@@ -16,6 +16,12 @@
         display: flex;
         padding-bottom: 15px;
         border-bottom: solid 2px #464d62;
+        &:focus-within{
+            font-weight: 600;
+            .form__icon{
+                fill: #9300e8;
+            }
+        }
     }
     &__input-box{
         display: flex;
@@ -36,6 +42,7 @@
         label {
             fill: #464d62;
             opacity: .3;
+            font-weight: 600;
         }
     }
     &__input {
@@ -43,6 +50,7 @@
             background: transparent;
             outline: none;
             border: #006aed;
+            font-weight: bold;
         }
     }
     &__comment{
@@ -55,10 +63,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to right, #9300e8, #4a00ed);
+            background: linear-gradient(to right, #9300e8 25%, #4a00ed);
             color: #fff;
             border-top-left-radius: 40px;
             border-bottom-right-radius: 40px;
+            font-weight: 600;
+            text-transform: uppercase;
+            &:hover{
+                background: linear-gradient(to right, #9300e8 50%, #4a00ed);
+            }
         }
     }
 }

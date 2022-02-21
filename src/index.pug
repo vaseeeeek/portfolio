@@ -27,21 +27,22 @@ html(lang="en")
                   ul.socials__list
                     - var social = ['insta', 'vk', 'github']
                     each item in social
-                      li.socials__item
-                        a(href="").socials__link
+                      li(class=`socials__item socials__item-${item}`)
+                        a(href="" target="_blank").socials__link
                           +icon(`${item}`, 'socials__icon')
               .hero-content
                 .user-info
-                  .user-info__description Личный сайт веб разработчика
+                  .user-info__description Личный сайт<br> веб разработчика
                   .user-info__name  Василий Лапшинкин
               .hero-bottom-buttons
                 .scroll-down-button Скролл
+                  +icon('scroll', 'scroll-icon')
           section.about
             .container.about__container
               .about__left
                 .user
                   .user__avatar
-
+                    .user__avatar__image
                   .user__data
                     table.user__data__table
                       -
@@ -87,8 +88,8 @@ html(lang="en")
                             .skill
                               - var skillDataOstatok = 100 - skillCircle[1]
                               svg(viewBox="0 0 42 42").skill__shape
-                                circle(cx="21" cy="21" r="19" fill="transparent" stroke="#d2d3d4" stroke-width="1.5").skill__circle.skill__circle--under
-                                circle(cx="21" cy="21" r="19" fill="transparent" stroke="url('#circleGradient')" stroke-width="3" stroke-dasharray=`${skillCircle[1]} ${skillDataOstatok}` stroke-dashoffset="50").skill__circle.skill__circle--above
+                                circle(cx="21" cy="21" r="18" fill="transparent" stroke="#d2d3d4" stroke-width="1.5").skill__circle.skill__circle--under
+                                circle(cx="21" cy="21" r="18" fill="transparent" stroke="url('#circleGradient')" stroke-width="5" stroke-dasharray=`${skillCircle[1]} ${skillDataOstatok}` stroke-dashoffset="50").skill__circle.skill__circle--above
                                 linearGradient(gradientTransform="rotate(90)")#circleGradient
                                   stop(offset="5%" stop-color="#7c00ea")
                                   stop(offset="95%" stop-color="#4a00ea")
@@ -160,7 +161,7 @@ html(lang="en")
                               .portfolio__project__description__tool__item #{itemPortfolioSkill}
                         .portfolio__project__description__name #{itemPortfolio[1]}
                         .portfolio__project__description__text #{itemPortfolio[2]}
-                        a(href=`${itemPortfolio[3]}`).portfolio__project__description__link
+                        a(href=`${itemPortfolio[3]}` target="_blank").portfolio__project__description__link
                           +icon('link', 'portfolio__project__description__link__icon')
                           .portfolio__project__description__link__text Посмотреть сайт
                     else
@@ -241,3 +242,32 @@ html(lang="en")
                             input(id="msg", type="textarea", name="user_msg", placeholder="Текст сообщения...")
                     .form__button
                       button( type="submit") Отправить
+        footer.footer
+          .container.footer__container
+            .footer__copyright
+              .footer__copyright-col
+                .footer__copyright-year &copy; 2019
+              .footer__copyright-userinfo
+                .footer__copyright-name Владимир Астаханов
+                .footer__data-text Личный сайт веб - разработчика
+            .footer__data
+              nav.nav
+                ul.nav__list
+                  each item in menu
+                    li.nav__item
+                      a(href="").nav__link #{item}
+              .footer__data-content
+                .footer__data-col
+                  .footer__data-text
+                    p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+                  .footer__data-socials
+                    ul.socials__list
+                      each item in social
+                        li.socials__item
+                          a(href="" target="_blank").socials__link
+                            +icon(`${item}`, 'socials__icon')
+                .footer__data-col
+                  .text-quote
+                    .text-quote__text
+                      p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                    .text-quote__author Martin Golding
