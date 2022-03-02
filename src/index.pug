@@ -30,6 +30,19 @@ html(lang="en")
                       li(class=`socials__item socials__item-${item}`)
                         a(href="" target="_blank").socials__link
                           +icon(`${item}`, 'socials__icon')
+                .header__burder
+                  .burger-btn
+                    
+                  .mobile-menu--box
+                    .mobile-menu__burger
+                    .mobile-menu__
+                      nav.nav
+                        ul.nav__list
+                          - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
+                          each item in menu
+                            li.nav__item
+                              a(href="").nav__link #{item}
+
               .hero-content
                 .user-info
                   .user-info__description Личный сайт<br> веб разработчика
