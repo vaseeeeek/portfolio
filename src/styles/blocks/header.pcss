@@ -2,6 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include tablets {
+        justify-content: initial;
+    }
 }
 
 .header__menu{
@@ -9,6 +12,9 @@
     display: flex;
     justify-content: center;
     margin: 0 20px;
+    @include tablets {
+        display: none;
+    }
 }
 .header__logo {
     //font-size: 36px;
@@ -17,4 +23,22 @@
     font-size: 36px;
     font-weight: 800;
     line-height: 0.83;
+    flex: 2;
+    @include tablets {
+        flex: initial;
+    }
+}
+.header__links{
+    flex: 2;
+    @include tablets {
+        flex: initial;
+        margin-left: auto;
+    }
+}
+.header__burder{
+    display: none;
+    margin-left: 90px;
+    @include tablets {
+        display: flex;
+    }
 }

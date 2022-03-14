@@ -1,0 +1,16 @@
+.burger-btn__list{
+    display: flex;
+    flex-direction: column;
+}
+.burger-btn__item{
+    position: relative;
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 0 1px;
+    transition: transform .3s,background-color .3s;
+    background-color: #000;
+}
+.burger-btn__item:not(:first-child) {
+    margin-top: 4px;
+}

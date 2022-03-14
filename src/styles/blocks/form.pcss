@@ -1,50 +1,61 @@
-.form{
-    &__wrap{
+.form {
+    &__wrap {
         display: flex;
         width: 100%;
         flex-direction: column;
     }
-    &__user-data{
+
+    &__user-data {
         display: flex;
         justify-content: space-between;
         margin-bottom: 40px;
+
         .form__item {
             width: 44%;
         }
     }
-    &__item{
+
+    &__item {
         display: flex;
         padding-bottom: 15px;
         border-bottom: solid 2px #464d62;
-        &:focus-within{
+
+        &:focus-within {
             font-weight: 600;
-            .form__icon{
+
+            .form__icon {
                 fill: #9300e8;
             }
         }
     }
-    &__input-box{
+
+    &__input-box {
         display: flex;
         flex-direction: column;
     }
-    &__image{
+
+    &__image {
         width: 26px;
         margin-right: 20px;
         display: flex;
         align-items: flex-end;
     }
-    &__icon{
+
+    &__icon {
         fill: #464d62;
         opacity: 0.3;
     }
-    &__label{
+
+    &__label {
         margin-bottom: 30px;
+
         label {
             fill: #464d62;
             opacity: .3;
             font-weight: 600;
         }
     }
+
     &__input {
         input {
             background: transparent;
@@ -53,11 +64,13 @@
             font-weight: bold;
         }
     }
-    &__comment{
+
+    &__comment {
         margin-bottom: 60px;
     }
-    &__button{
-        button{
+
+    &__button {
+        button {
             width: 347px;
             height: 80px;
             display: flex;
@@ -69,9 +82,17 @@
             border-bottom-right-radius: 40px;
             font-weight: 600;
             text-transform: uppercase;
-            &:hover{
+
+            &:hover {
                 background: linear-gradient(to right, #9300e8 50%, #4a00ed);
             }
         }
+    }
+}
+
+.form__button {
+    @include tablets {
+        display: flex;
+        justify-content: center;
     }
 }

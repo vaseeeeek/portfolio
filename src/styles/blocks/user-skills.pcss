@@ -1,11 +1,14 @@
 
 .skills__row__item{
     display: flex;
-    flex-wrap: wrap;
+    margin-right: 50px;
+    @include tablets {
+        margin-right: 0px;
+
+    }
     .skill{
         display: inline-flex;
         position: relative;
-        margin-right: 68px;
         &__shape {
             width: 134px;
             height: 134px;
@@ -25,8 +28,18 @@
         }
     }
 }
+.skills__row__list{
+    display: flex;
+    flex-wrap: wrap;
+    @include tablets {
+        justify-content: space-evenly;
+    }
+}
 .user-skills{
     padding-left: 55px;
+    @include tablets {
+        padding-left: 0;
+    }
 }
 .user-skills:not(:last-child){
     margin-bottom: 50px;
@@ -35,5 +48,9 @@
     font-size: 24px;
     font-weight: bold;
     color: #464d62;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
+    @include tablets {
+        margin-bottom: 30px;
+        text-align: center;
+    }
 }

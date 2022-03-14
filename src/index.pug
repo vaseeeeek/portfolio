@@ -32,10 +32,12 @@ html(lang="en")
                           +icon(`${item}`, 'socials__icon')
                 .header__burder
                   .burger-btn
-                    
+                    .burger-btn__list
+                      .burger-btn__item
+                      .burger-btn__item
+                      .burger-btn__item
                   .mobile-menu--box
-                    .mobile-menu__burger
-                    .mobile-menu__
+                    .mobile-menu__nav
                       nav.nav
                         ul.nav__list
                           - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
@@ -89,15 +91,15 @@ html(lang="en")
                     .skills__row
                       .skills__row__title Frontend
                       ul.skills__row__list
-                        li.skills__row__item
-                          -
-                            var skillData = [
-                              ['HTML5:', '25'],
-                              ['CSS3:', '12.5'],
-                              ['Javascript:', '75'],
-                              ['Jquery и Vue.js:', '25'],
-                            ]
-                          each skillCircle in skillData
+                        -
+                          var skillData = [
+                            ['HTML5:', '25'],
+                            ['CSS3:', '12.5'],
+                            ['Javascript:', '75'],
+                            ['Jquery и Vue.js:', '25'],
+                          ]
+                        each skillCircle in skillData
+                          li.skills__row__item
                             .skill
                               - var skillDataOstatok = 100 - skillCircle[1]
                               svg(viewBox="0 0 42 42").skill__shape
@@ -112,15 +114,15 @@ html(lang="en")
                     .skills__row
                       .skills__row__title Workflow
                       ul.skills__row__list
-                        li.skills__row__item
-                          -
-                            var skillData = [
-                              ['GIT:', '13.5'],
-                              ['Terminal:', '25'],
-                              ['Gulp:', '50'],
-                              ['Webpack:', '40'],
-                            ]
-                          each skillCircle in skillData
+                        -
+                          var skillData = [
+                            ['GIT:', '13.5'],
+                            ['Terminal:', '25'],
+                            ['Gulp:', '50'],
+                            ['Webpack:', '40'],
+                          ]
+                        each skillCircle in skillData
+                          li.skills__row__item
                             .skill
                               - var skillDataOstatok = 100 - skillCircle[1]
                               svg(viewBox="0 0 42 42").skill__shape
