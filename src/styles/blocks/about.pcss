@@ -2,13 +2,28 @@
     padding: 0 10%;
     @include tablets {
         padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 .about .section-title{
     margin-bottom: 30px;
+    @include tablets {
+        margin-bottom: 50px;
+    }
 }
 .about__left{
     margin-right: 160px;
+    @include tablets {
+        margin-right: 0;
+        margin-bottom: 50px;
+    }
+}
+.about__right{
+    @include tablets {
+        text-align: center;
+    }
 }
 .user__data__cell{
     white-space: nowrap;
@@ -27,6 +42,9 @@
     opacity: .5;
     margin-bottom: 100px;
     line-height: 1.88;
+    @include tablets {
+        margin-bottom: 50px;
+    }
 }
 .about__ps {
     font-style: italic;

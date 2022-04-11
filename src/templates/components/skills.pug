@@ -1,0 +1,46 @@
+script(type="text/x-component")#skills-list
+  ul.user-skills
+    li.users-skills__item
+      .skills__row
+        .skills__row__title Frontend
+        ul.skills__row__list
+          -
+            var skillData = [
+              ['HTML5:', '25'],
+              ['CSS3:', '12.5'],
+              ['Javascript:', '75'],
+              ['Jquery и Vue.js:', '25'],
+            ]
+          each skillCircle in skillData
+            li.skills__row__item
+              .skill
+                - var skillDataOstatok = 100 - skillCircle[1]
+                svg(viewBox="0 0 42 42").skill__shape
+                  circle(cx="21" cy="21" r="18" fill="transparent" stroke="#d2d3d4" stroke-width="1.5").skill__circle.skill__circle--under
+                  circle(cx="21" cy="21" r="18" fill="transparent" stroke="url('#circleGradient')" stroke-width="5" stroke-dasharray=`${skillCircle[1]} ${skillDataOstatok}` stroke-dashoffset="50").skill__circle.skill__circle--above
+                  linearGradient(gradientTransform="rotate(90)")#circleGradient
+                    stop(offset="5%" stop-color="#7c00ea")
+                    stop(offset="95%" stop-color="#4a00ea")
+                .skill__title #{skillCircle[0]}
+    li.users-skills__item
+      .skills__row
+        .skills__row__title Workflow
+        ul.skills__row__list
+          -
+            var skillData = [
+              ['GIT:', '13.5'],
+              ['Terminal:', '25'],
+              ['Gulp:', '50'],
+              ['Webpack:', '40'],
+            ]
+          each skillCircle in skillData
+            li.skills__row__item
+              .skill
+                - var skillDataOstatok = 100 - skillCircle[1]
+                svg(viewBox="0 0 42 42").skill__shape
+                  circle(cx="21" cy="21" r="18" fill="transparent" stroke="#d2d3d4" stroke-width="2").skill__circle.skill__circle--under
+                  circle(cx="21" cy="21" r="18" fill="transparent" stroke="url('#circleGradient')" stroke-width="5" stroke-dasharray=`${skillCircle[1]} ${skillDataOstatok}` stroke-dashoffset="50").skill__circle.skill__circle--above
+                  linearGradient(gradientTransform="rotate(90)")#circleGradient
+                    stop(offset="5%" stop-color="#7c00ea")
+                    stop(offset="95%" stop-color="#4a00ea")
+                .skill__title #{skillCircle[0]}

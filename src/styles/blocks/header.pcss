@@ -34,11 +34,17 @@
         flex: initial;
         margin-left: auto;
     }
+    @include phones {
+        display: none;
+    }
 }
 .header__burder{
     display: none;
     margin-left: 90px;
     @include tablets {
         display: flex;
+    }
+    @include phones {
+        margin-left: auto;
     }
 }

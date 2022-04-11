@@ -49,8 +49,12 @@
 
     &__slider {
         display: flex;
+        overflow: hidden;
     }
 
     &__item {
+        @include phones{
+            min-width: 100%;
+        }
     }
 }

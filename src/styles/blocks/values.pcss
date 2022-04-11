@@ -32,7 +32,10 @@
 }
 
 .values__image__img {
-    max-width: 256px;
+    max-width: 700px;
+    @include tablets {
+        max-width: 300px;
+    }
 }
 
 .values__title {

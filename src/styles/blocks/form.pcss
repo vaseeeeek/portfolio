@@ -9,9 +9,15 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 40px;
+        @include phones {
+            flex-direction: column;
+        }
 
         .form__item {
             width: 44%;
+            @include phones {
+                width: 100%;
+            }
         }
     }
 
