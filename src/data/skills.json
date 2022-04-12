@@ -1,0 +1,20 @@
+[
+  {
+    "skillsGroup": "Frontend",
+    "skills": {
+      "html": 30,
+      "css3": 40,
+      "javaScript & jQuery": 50,
+      "Vue.js": 60
+    }
+  },
+  {
+    "skillsGroup": "Backend",
+    "skills": {
+      "Php": 30,
+      "mySql": 40,
+      "Node.js & npm": 50,
+      "Mongo.db": 60
+    }
+  }
+]
