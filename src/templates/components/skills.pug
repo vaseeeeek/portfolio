@@ -1,21 +1,26 @@
 script(type="text/x-template")#skills-list
   ul.user-skills
-    li.users-skills__item
-      skills-row
+    li.users-skills__item(v-for="group in skills" :key="group.skillsGroup")
+      skills-row(
+        :group="group"
+      )
 
 script(type="text/x-template")#skills-row
   .skills__row
-    .skills__row__title Frontend
+    .skills__row__title {{group.skillsGroup}}
     ul.skills__row__list
-      li.skills__row__item
-        skill
+      li.skills__row__item(v-for="(skillPercent, skillName) in group.skills")
+        skill(
+          :skillName="skillName"
+          :skillPercent="skillPercent"
+        )
 
 script(type="text/x-template")#skill
   .skill
-    svg(viewBox="0 0 42 42").skill__shape
-      circle(cx="21" cy="21" r="18" fill="transparent" stroke="#d2d3d4" stroke-width="2").skill__circle.skill__circle--under
-      circle(cx="21" cy="21" r="18" fill="transparent" stroke="url('#circleGradient')" stroke-width="5" stroke-dasharray="25 75" stroke-dashoffset="50").skill__circle.skill__circle--above
-      linearGradient(gradientTransform="rotate(90)")#circleGradient
-        stop(offset="5%" stop-color="#7c00ea")
-        stop(offset="95%" stop-color="#4a00ea")
-    .skill__title HTML5
+    svg(viewBox="0 0 100 100").skill__shape
+      circle(cx="50" cy="50" r="40" fill="transparent" stroke="#d2d3d4" stroke-width="5").skill__circle.skill__circle--under
+      circle(cx="50" cy="50" r="40" fill="transparent" ref="circle" stroke-width="12px" stroke-dasharray="251" stroke-dashoffset="100" stroke="url(#gradient)" transform='rotate(180 50 50)').skill__circle.skill__circle--above
+      linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
+        stop(offset="0%" stop-color="#5500f2")
+        stop(offset="100%" stop-color="#8f00ef")
+    .skill__title {{skillName}}

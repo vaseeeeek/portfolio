@@ -1,0 +1,59 @@
+script(type="text/x-template")#works-slider
+  .container.portfolio__container
+    .portfolio__title
+      .section-title Мои работы
+    .portfolio__left
+      .portfolio__project
+        .portfolio__project__active
+          .portfolio__project__active__image
+            +image('content/portfolio/1.jpg', 'portfolio__project__active__image__img')
+          .portfolio__project__active__num 1
+        .portfolio__project__list
+          -
+            var arrPortfolio = [
+              [['CSS', 'PHP', 'JS', 'TYPESCRIPT'], 'Сайт школы образования 1', 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей! 1', 'url-1'],
+              [['HTML', 'PHP', 'JS', 'TYPESCRIPT'], 'Сайт школы образования 2', 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей! 2', 'url-2'],
+              [['HTML', 'CSS', 'JS', 'TYPESCRIPT'], 'Сайт школы образования 3', 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей! 3', 'url-3'],
+              [['HTML', 'CSS', 'PHP', 'TYPESCRIPT'], 'Сайт школы образования 4', 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей! 4', 'url-4'],
+              [['HTML', 'CSS', 'PHP', 'JS'], 'Сайт школы образования 5', 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей! 5', 'url-5'],
+            ]
+          each itemPortfolio, index in arrPortfolio
+            if index==0
+              .portfolio__project__item.active(data-num=`${index + 1}`)
+                .portfolio__project__item__image
+                  +image(`content/portfolio/${index + 1}.jpg`, `portfolio__project__item__image__img`)
+            else
+              .portfolio__project__item(data-num=`${index + 1}`)
+                .portfolio__project__item__image
+                  +image(`content/portfolio/${index + 1}.jpg`, `portfolio__project__item__image__img`)
+        .portfolio__project__actions
+          .portfolio__project__actions__btn.portfolio__project__actions__btn--next
+            +icon('arrow-down', 'portfolio__project__actions__btn__icon')
+          .portfolio__project__actions__btn.portfolio__project__actions__btn--prev
+            +icon('arrow-down', 'portfolio__project__actions__btn__icon')
+    .portfolio__right
+      .portfolio__project__description__list
+        each itemPortfolio, index in arrPortfolio
+          if index==0
+            .portfolio__project__description__item(id=`${index + 1}`)
+              .portfolio__project__description__tool
+                .portfolio__project__description__tool__list
+                  each itemPortfolioSkill, index in itemPortfolio[0]
+                    .portfolio__project__description__tool__item #{itemPortfolioSkill}
+              .portfolio__project__description__name #{itemPortfolio[1]}
+              .portfolio__project__description__text #{itemPortfolio[2]}
+              a(href=`${itemPortfolio[3]}` target="_blank").portfolio__project__description__link
+                +icon('link', 'portfolio__project__description__link__icon')
+                .portfolio__project__description__link__text Посмотреть сайт
+          else
+            .portfolio__project__description__item.hide(id=`${index + 1}`)
+              .portfolio__project__description__tool
+                .portfolio__project__description__tool__list
+                  each itemPortfolioSkill, index in itemPortfolio[0]
+                    .portfolio__project__description__tool__item #{itemPortfolioSkill}
+              .portfolio__project__description__name #{itemPortfolio[1]}
+              .portfolio__project__description__text #{itemPortfolio[2]}
+              a(href=`${itemPortfolio[3]}`).portfolio__project__description__link
+                +icon('link', 'portfolio__project__description__link__icon')
+                .portfolio__project__description__link__text Посмотреть сайт
+      
