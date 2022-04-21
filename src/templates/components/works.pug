@@ -3,43 +3,53 @@ script(type="text/x-template")#works-slider
     .portfolio__title
       .section-title Мои работы
     .portfolio__left
-      display
+      display(
+        :works="works"
+        :currentWork = "currentWork"
+        @slide="handleSlide"
+      )
     .portfolio__right 
-      info
+      info(
+        :currentWork = "currentWork"
+      )
       
 script(type="text/x-template")#slider-display
   .portfolio__project
     .portfolio__project__active
       .portfolio__project__active__image
-        +image('content/portfolio/1.jpg', 'portfolio__project__active__image__img')
+        img(:src="currentWork.photo").portfolio__project__item__image__img
       .portfolio__project__active__num 1
-    thumbs
-    buttons 
+    thumbs(
+      :works="works"
+    )
+    buttons(
+      @slide="direction => $emit('slide', 'direction')"
+    )
 
 script(type="text/x-template")#slider-thumbs
   .portfolio__project__list 
-    .portfolio__project__item
+    .portfolio__project__item(v-for="work in works" :key="work.id")
       .portfolio__project__item__image
-        +image(`content/portfolio/1.jpg`, `portfolio__project__item__image__img`)
+        img(:src="work.photo").portfolio__project__item__image__img
 
 script(type="text/x-template")#slider-buttons
   .portfolio__project__actions
-    .portfolio__project__actions__btn.portfolio__project__actions__btn--next
+    .portfolio__project__actions__btn.portfolio__project__actions__btn--next(@click="$emit('slide', 'next')")
       +icon('arrow-down', 'portfolio__project__actions__btn__icon')
-    .portfolio__project__actions__btn.portfolio__project__actions__btn--prev
+    .portfolio__project__actions__btn.portfolio__project__actions__btn--prev(@click="$emit('slide', 'prev')")
       +icon('arrow-down', 'portfolio__project__actions__btn__icon') 
 
 script(type="text/x-template")#slider-tools
-  .portfolio__project__description__tool 111111
+  .portfolio__project__description__tool 
     .portfolio__project__description__tool__list
       .portfolio__project__description__tool__item 
 
 script(type="text/x-template")#slider-description
   .portfolio__project__description__list
-    .portfolio__project__description__item.hide
+    .portfolio__project__description__item
       tools
-      .portfolio__project__description__name 
-      .portfolio__project__description__text 
-      a(href=``).portfolio__project__description__link
+      .portfolio__project__description__name {{currentWork.title}}
+      .portfolio__project__description__text {{currentWork.desc}}
+      a(:href="currentWork.link").portfolio__project__description__link
         +icon('link', 'portfolio__project__description__link__icon')
         .portfolio__project__description__link__text Посмотреть сайт

@@ -6,6 +6,9 @@ const tools = {
 
 const thumbs = {
   template: "#slider-thumbs",
+  props: {
+    works: Array
+  }
 };
 
 const buttons = {
@@ -16,6 +19,9 @@ const info = {
   template: "#slider-description",
   components: {
     tools
+  },
+  props: {
+    currentWork: Object
   }
 };
 
@@ -25,6 +31,10 @@ const display = {
     thumbs,
     buttons
   },
+  props: {
+    works: Array,
+    currentWork: Object
+  }
 };
 
 new Vue ({
@@ -34,4 +44,28 @@ new Vue ({
     display,
     info
   },
+  data() {
+    return {
+      works: [],
+      currentWork: {}
+    }
+  },
+  methods: {
+    makeArrWithRequiredImages(data) {
+      return data.map(item => {
+        const requiredPic = require(`../images/content/portfolio/${item.photo}`);
+        item.photo = requiredPic['default']; 
+
+        return item;
+      })
+    },
+    handleSlide(direction) {
+      console.log(direction);
+    }
+  },
+  created() {
+    const data = require('../data/works.json')
+    this.works = this.makeArrWithRequiredImages(data);
+    this.currentWork = this.works[0];
+  }
 });
