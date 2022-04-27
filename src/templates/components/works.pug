@@ -6,6 +6,7 @@ script(type="text/x-template")#works-slider
       display(
         :works="works"
         :currentWork = "currentWork"
+        :currentIndex="currentIndex"
         @slide="handleSlide"
       )
     .portfolio__right 
@@ -18,17 +19,18 @@ script(type="text/x-template")#slider-display
     .portfolio__project__active
       .portfolio__project__active__image
         img(:src="currentWork.photo").portfolio__project__item__image__img
-      .portfolio__project__active__num 1
+      .portfolio__project__active__num {{currentIndex + 1}}
     thumbs(
       :works="works"
+      :currentWork="currentWork"
     )
     buttons(
-      @slide="direction => $emit('slide', 'direction')"
+      @slide="$emit('slide', $event)"
     )
 
 script(type="text/x-template")#slider-thumbs
   .portfolio__project__list 
-    .portfolio__project__item(v-for="work in works" :key="work.id")
+    .portfolio__project__item(v-for="work in works" :key="work.id" :class="{active: currentWork.id == work.id}")
       .portfolio__project__item__image
         img(:src="work.photo").portfolio__project__item__image__img
 
@@ -39,17 +41,19 @@ script(type="text/x-template")#slider-buttons
     .portfolio__project__actions__btn.portfolio__project__actions__btn--prev(@click="$emit('slide', 'prev')")
       +icon('arrow-down', 'portfolio__project__actions__btn__icon') 
 
-script(type="text/x-template")#slider-tools
-  .portfolio__project__description__tool 
-    .portfolio__project__description__tool__list
-      .portfolio__project__description__tool__item 
-
 script(type="text/x-template")#slider-description
   .portfolio__project__description__list
     .portfolio__project__description__item
-      tools
+      tools(
+        :tagsArray="tagsArray" 
+      )
       .portfolio__project__description__name {{currentWork.title}}
       .portfolio__project__description__text {{currentWork.desc}}
       a(:href="currentWork.link").portfolio__project__description__link
         +icon('link', 'portfolio__project__description__link__icon')
         .portfolio__project__description__link__text Посмотреть сайт
+
+script(type="text/x-template")#slider-tools
+  .portfolio__project__description__tool 
+    .portfolio__project__description__tool__list
+      .portfolio__project__description__tool__item(v-for="tag in tagsArray") {{tag}}

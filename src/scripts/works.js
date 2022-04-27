@@ -2,12 +2,16 @@ import Vue from "vue";
 
 const tools = {
   template: "#slider-tools",
+  props: {
+    tagsArray: Array
+  }
 };
 
 const thumbs = {
   template: "#slider-thumbs",
   props: {
-    works: Array
+    works: Array,
+    currentWork: Object
   }
 };
 
@@ -22,6 +26,11 @@ const info = {
   },
   props: {
     currentWork: Object
+  },
+  computed: {
+    tagsArray() {
+      return this.currentWork.skills.split(',');
+    }
   }
 };
 
@@ -33,7 +42,8 @@ const display = {
   },
   props: {
     works: Array,
-    currentWork: Object
+    currentWork: Object,
+    currentIndex: Number
   }
 };
 
@@ -47,10 +57,29 @@ new Vue ({
   data() {
     return {
       works: [],
-      currentWork: {}
+      currentIndex: 0
+    }
+  },
+  computed: {
+    currentWork() {
+      return this.works[this.currentIndex];
+    }
+  },
+  watch: {
+    currentIndex (value) {
+      this.makeInfiniteLoopForCurIndex(value);
     }
   },
   methods: {
+    makeInfiniteLoopForCurIndex (value) {
+      const amountWorks = this.works.length - 1;
+      if (value > amountWorks) {
+        this.currentIndex = 0
+      }
+      if (value < 0) {
+        this.currentIndex = amountWorks
+      }
+    },
     makeArrWithRequiredImages(data) {
       return data.map(item => {
         const requiredPic = require(`../images/content/portfolio/${item.photo}`);
@@ -60,12 +89,18 @@ new Vue ({
       })
     },
     handleSlide(direction) {
-      console.log(direction);
+      switch (direction) {
+        case 'next' :
+          this.currentIndex--;
+          break
+        case 'prev' :
+          this.currentIndex++;
+          break
+      }
     }
   },
   created() {
-    const data = require('../data/works.json')
+    const data = require('../data/works.json');
     this.works = this.makeArrWithRequiredImages(data);
-    this.currentWork = this.works[0];
   }
 });
